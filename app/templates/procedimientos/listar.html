@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h2>Nuestros Procedimientos</h2>
+        <p class="lead">Descubre nuestros tratamientos de medicina estética</p>
+        
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for procedimiento in procedimientos %}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ procedimiento.nombre }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ procedimiento.categoria|capitalize }}</h6>
+                        <p class="card-text">{{ procedimiento.descripcion|truncate(150) }}</p>
+                        <a href="{{ url_for('procedimientos.detalle', id=procedimiento.id) }}" class="btn btn-primary">Ver más</a>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Duración: {{ procedimiento.duracion_min }} min</small>
+                        <span class="float-end">${{ "{:,.0f}".format(procedimiento.costo_base) }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5>Tratamientos Combinados</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    {% for tratamiento in tratamientos %}
+                    <li class="list-group-item">
+                        <h6>{{ tratamiento.nombre }}</h6>
+                        <p>{{ tratamiento.descripcion|truncate(100) }}</p>
+                        <small>{{ tratamiento.sesiones }} sesiones - ${{ "{:,.0f}".format(tratamiento.costo_total) }}</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card mt-3">
+            <div class="card-body text-center">
+                <h5 class="card-title">¿Listo para tu transformación?</h5>
+                <a href="{{ url_for('citas.agendar') }}" class="btn btn-primary">Agendar Cita</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

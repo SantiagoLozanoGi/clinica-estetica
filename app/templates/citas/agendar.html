@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2>Agendar Nueva Cita</h2>
+        
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            
+            <div class="mb-3">
+                {{ form.procedimiento_id.label(class="form-label") }}
+                {{ form.procedimiento_id(class="form-select") }}
+            </div>
+            
+            <div class="mb-3">
+                {{ form.medico_id.label(class="form-label") }}
+                {{ form.medico_id(class="form-select") }}
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.fecha_hora.label(class="form-label") }}
+                    {{ form.fecha_hora(class="form-control") }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.duracion_estimada.label(class="form-label") }}
+                    {{ form.duracion_estimada(class="form-control") }}
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                {{ form.notas.label(class="form-label") }}
+                {{ form.notas(class="form-control", rows=3) }}
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Agendar Cita</button>
+            <a href="{{ url_for('citas.listar') }}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
