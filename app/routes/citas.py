@@ -41,7 +41,7 @@ def agendar():
         
         db.session.commit()
         flash('¡Cita agendada con éxito!', 'success')
-        return redirect(url_for('citas.listar'))
+        return redirect(url_for('main.listar'))
     
     return render_template('citas/agendar.html', form=form)
 
@@ -65,4 +65,4 @@ def cancelar(id):
     cita.estado = 'cancelada'
     db.session.commit()
     flash('Cita cancelada exitosamente', 'success')
-    return redirect(url_for('citas.listar'))
+    return redirect(url_for('main.listar'))
