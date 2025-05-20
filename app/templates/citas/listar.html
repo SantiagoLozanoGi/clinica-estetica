@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Citas Agendadas</h2>
+    {% if citas %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Procedimiento</th>
+                <th>Médico</th>
+                <th>Duración</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cita in citas %}
+            <tr>
+                <td>{{ cita.fecha_hora.strftime("%Y-%m-%d %H:%M") }}</td>
+                <td>{{ cita.procedimiento.nombre }}</td>
+                <td>{{ cita.medico.nombre }}</td>
+                <td>{{ cita.duracion_estimada }} min</td>
+                <td>
+                    <a href="{{ url_for('main.detalle', cita_id=cita.id) }}" class="btn btn-sm btn-info">Ver</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No tienes citas agendadas.</p>
+    {% endif %}
+</div>
+{% endblock %}
