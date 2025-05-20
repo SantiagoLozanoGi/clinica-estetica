@@ -6,7 +6,7 @@ from app.models import Usuario
 class LoginForm(FlaskForm):
     username = StringField('Usuario', validators=[DataRequired()])
     password = PasswordField('Contraseña', validators=[DataRequired()])
-    remember_me = BooleanField('Recordarme')
+    remember_me = BooleanField('Recordarme')  # ✅ Nombre correcto y único
     submit = SubmitField('Iniciar Sesión')
 
 class RegistrationForm(FlaskForm):
@@ -39,3 +39,4 @@ class CitaForm(FlaskForm):
     duracion_estimada = IntegerField('Duración (minutos)', default=30, validators=[DataRequired()])
     notas = TextAreaField('Notas Adicionales')
     submit = SubmitField('Agendar Cita')
+    

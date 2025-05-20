@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-section text-center py-5"
+         style="background: linear-gradient(to bottom right, #e6f0ff, #ffffff);">
+    <div class="container">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}"
+             alt="Logo Clínica"
+             class="mb-4"
+             style="max-height: 140px;">
+             
+        <h1 class="display-4 fw-bold mb-4 text-dark">Dra. Juliet Vanessa Medina Orjuela</h1>
+        
+        <a href="{{ url_for('main.agendar') }}" class="btn btn-primary btn-lg px-4 me-2">
+            <i class="fas fa-calendar-check me-2"></i>Agendar Cita
+        </a>
+        <a href="{{ url_for('main.procedimientos') }}" class="btn btn-outline-primary btn-lg px-4">
+            <i class="fas fa-procedures me-2"></i>Nuestros Procedimientos
+        </a>
+    </div>
+</section>
+
+
+
+<!-- Sobre la Doctora -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                <img src="/static/images/doctora.jpg" alt="Dra. Juliet Medina" class="img-fluid doctor-img" style="max-width: 300px;">
+            </div>
+            <div class="col-lg-8">
+                <h2 class="fw-bold mb-4">Sobre la Dra. Juliet Medina</h2>
+                <p class="lead">Médica Especialista en Medicina Estética con más de 10 años de experiencia.</p>
+                <p>Graduada con honores de la Universidad del Tolima, con Maestría en Dirección y Gestión Sanitaria. Mi enfoque es proporcionar tratamientos personalizados que combinan lo último en tecnología con un enfoque holístico del bienestar.</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-award text-primary me-2"></i>Especialidades</h5>
+                        <ul>
+                            <li>Medicina Estética Facial</li>
+                            <li>Nutrición y Control de Peso</li>
+                            <li>Tratamientos Antiedad</li>
+                            <li>Terapias de Regeneración Celular</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-graduation-cap text-primary me-2"></i>Certificaciones</h5>
+                        <ul>
+                            <li>Miembro de la Sociedad Colombiana de Medicina Estética</li>
+                            <li>Certificada en Toxina Botulínica y Rellenos</li>
+                            <li>Diplomado en Medicina Antienvejecimiento</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Procedimientos Destacados -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Procedimientos Destacados</h2>
+            <p class="lead">Descubre nuestros tratamientos más populares</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card procedure-card h-100">
+                    <img src="/static/images/botox.jpg" class="card-img-top" alt="Bótox">
+                    <div class="card-body">
+                        <h5 class="card-title">Bótox</h5>
+                        <p class="card-text">Tratamiento para suavizar arrugas de expresión con resultados naturales.</p>
+                        <a href="{{ url_for('main.detalleprocedimiento', id=1) }}" class="btn btn-outline-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card procedure-card h-100">
+                    <img src="/static/images/rellenos.jpg" class="card-img-top" alt="Rellenos">
+                    <div class="card-body">
+                        <h5 class="card-title">Ácido Hialurónico</h5>
+                        <p class="card-text">Rellenos faciales para restaurar volumen y contorno facial.</p>
+                        <a href="{{ url_for('main.detalleprocedimiento', id=2) }}" class="btn btn-outline-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card procedure-card h-100">
+                    <img src="/static/images/laser.jpg" class="card-img-top" alt="Láser">
+                    <div class="card-body">
+                        <h5 class="card-title">Láser CO2</h5>
+                        <p class="card-text">Rejuvenecimiento facial con tecnología láser de última generación.</p>
+                        <a href="{{ url_for('main.detalleprocedimiento', id=3) }}" class="btn btn-outline-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{{ url_for('main.procedimientos') }}" class="btn btn-primary btn-lg">
+                Ver todos los procedimientos <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonios -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Lo que dicen nuestros pacientes</h2>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text">"La Dra. Medina tiene un enfoque profesional y cálido. Los resultados de mi tratamiento superaron mis expectativas."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="/static/images/paciente1.jpg" alt="Paciente" class="rounded-circle me-3" width="50">
+                            <div>
+                                <h6 class="mb-0">María González</h6>
+                                <small class="text-muted">Paciente desde 2020</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text">"Excelente atención y resultados muy naturales. Me siento 10 años más joven gracias a sus tratamientos."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="/static/images/paciente2.jpg" alt="Paciente" class="rounded-circle me-3" width="50">
+                            <div>
+                                <h6 class="mb-0">Carlos Rodríguez</h6>
+                                <small class="text-muted">Paciente desde 2021</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text">"Profesionalismo y atención personalizada. Los tratamientos son indoloros y los resultados espectaculares."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="/static/images/paciente3.jpg" alt="Paciente" class="rounded-circle me-3" width="50">
+                            <div>
+                                <h6 class="mb-0">Ana Martínez</h6>
+                                <small class="text-muted">Paciente desde 2019</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

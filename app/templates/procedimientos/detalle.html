@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="{{ procedimiento.imagen_url or '/static/images/procedimiento-default.jpg' }}" alt="{{ procedimiento.nombre }}" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="fw-bold mb-3">{{ procedimiento.nombre }}</h1>
+                <h5 class="text-muted mb-4">{{ procedimiento.categoria|capitalize }}</h5>
+                
+                <div class="d-flex justify-content-between mb-4">
+                    <div>
+                        <h4 class="text-primary">${{ "{:,.0f}".format(procedimiento.costo_base) }}</h4>
+                    </div>
+                    <div>
+                        <span class="badge bg-primary"><i class="fas fa-clock me-1"></i> {{ procedimiento.duracion_min }} min</span>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="mb-3">Descripción</h4>
+                    <p>{{ procedimiento.descripcion }}</p>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="mb-3">Beneficios</h4>
+                    <ul class="list-group list-group-flush">
+                        {% for beneficio in procedimiento.beneficios.split('\n') %}
+                        <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-success me-2"></i> {{ beneficio }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="mb-3">Cuidados posteriores</h4>
+                    <div class="alert alert-light">
+                        {{ procedimiento.cuidados_posteriores }}
+                    </div>
+                </div>
+                
+                <a href="{{ url_for('main.agendar') }}?procedimiento={{ procedimiento.id }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-calendar-check me-2"></i>Agendar cita para este procedimiento
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Contraindicaciones</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ procedimiento.contraindicaciones }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-clipboard-check me-2"></i>Requisitos</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ procedimiento.requerimientos }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
