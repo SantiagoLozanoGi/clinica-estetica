@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Detalle de Cita</h2>
+
+    <ul class="list-group mb-3">
+        <li class="list-group-item"><strong>Fecha y hora:</strong> {{ cita.fecha_hora.strftime('%Y-%m-%d %H:%M') }}</li>
+        <li class="list-group-item"><strong>Duración estimada:</strong> {{ cita.duracion_estimada }} minutos</li>
+        <li class="list-group-item"><strong>Médico:</strong> {{ cita.medico.persona.nombres }} {{ cita.medico.persona.apellidos }}</li>
+        <li class="list-group-item"><strong>Sala:</strong> {{ cita.sala }}</li>
+        <li class="list-group-item"><strong>Estado:</strong> {{ cita.estado|capitalize }}</li>
+        <li class="list-group-item"><strong>Notas:</strong> {{ cita.notas or 'Sin notas adicionales' }}</li>
+    </ul>
+
+    <form method="POST" action="{{ url_for('main.cancelar', id=cita.id) }}">
+        <button type="submit" class="btn btn-danger">Cancelar Cita</button>
+        <a href="{{ url_for('main.listar') }}" class="btn btn-secondary">Volver</a>
+    </form>
+</div>
+{% endblock %}
+

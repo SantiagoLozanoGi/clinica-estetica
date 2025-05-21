@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField, DateTimeField, IntegerField
+from wtforms import DateTimeLocalField, StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField, DateTimeField, IntegerField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 from app.models import Usuario
 
@@ -35,8 +35,19 @@ class RegistrationForm(FlaskForm):
 class CitaForm(FlaskForm):
     procedimiento_id = SelectField('Procedimiento', coerce=int, validators=[DataRequired()])
     medico_id = SelectField('Médico', coerce=int, validators=[DataRequired()])
-    fecha_hora = DateTimeField('Fecha y Hora', format='%Y-%m-%d %H:%M', validators=[DataRequired()])
+    # CAmbio aquí: Usar DateTimeLocalField y el formato para HTML5 datetime-local
+    fecha_hora = DateTimeLocalField('Fecha y Hora', format='%Y-%m-%dT%H:%M', validators=[DataRequired()])
     duracion_estimada = IntegerField('Duración (minutos)', default=30, validators=[DataRequired()])
     notas = TextAreaField('Notas Adicionales')
+    
+    # ... (campos adicionales para crear paciente)
+    tipo_sangre = StringField('Tipo de Sangre')
+    alergias = TextAreaField('Alergias')
+    medicamentos_actuales = TextAreaField('Medicamentos Actuales')
+    historial_estetica_previo = TextAreaField('Historial Estético Previo')
+    motivo_consulta = TextAreaField('Motivo de Consulta')
+    referido_por = StringField('Referido Por')
+
     submit = SubmitField('Agendar Cita')
+
     
