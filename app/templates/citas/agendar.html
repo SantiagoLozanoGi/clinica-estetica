@@ -4,38 +4,161 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <h2>Agendar Nueva Cita</h2>
-        
+
         <form method="POST">
             {{ form.hidden_tag() }}
-            
+
+            {# Mostrar errores globales del formulario si existen #}
+            {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <p><strong>Por favor, corrige los siguientes errores:</strong></p>
+                    <ul>
+                        {% for field, errors in form.errors.items() %}
+                            <li>
+                                {% if field == 'csrf_token' %}
+                                    Error de seguridad (CSRF). Intenta recargar la página.
+                                {% else %}
+                                    **{{ field | capitalize }}:** {{ errors | join(', ') }}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            {# Mensajes flash (para el éxito o errores específicos de la vista) #}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
             <div class="mb-3">
                 {{ form.procedimiento_id.label(class="form-label") }}
                 {{ form.procedimiento_id(class="form-select") }}
+                {# Mostrar errores específicos para este campo #}
+                {% if form.procedimiento_id.errors %}
+                    {% for error in form.procedimiento_id.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
             </div>
-            
+
+            <h4>Datos del Paciente</h4>
+            {# Este título asume que el usuario actual es quien se registrará como paciente si no existe. #}
+            {# Si el formulario fuera para agendar CITA para OTRO paciente, la lógica y los campos serían diferentes. #}
+
+            <div class="mb-3">
+                {{ form.tipo_sangre.label(class="form-label") }}
+                {{ form.tipo_sangre(class="form-control") }}
+                {% if form.tipo_sangre.errors %}
+                    {% for error in form.tipo_sangre.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.alergias.label(class="form-label") }}
+                {{ form.alergias(class="form-control", rows=2) }}
+                {% if form.alergias.errors %}
+                    {% for error in form.alergias.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.medicamentos_actuales.label(class="form-label") }}
+                {{ form.medicamentos_actuales(class="form-control", rows=2) }}
+                {% if form.medicamentos_actuales.errors %}
+                    {% for error in form.medicamentos_actuales.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.historial_estetica_previo.label(class="form-label") }}
+                {{ form.historial_estetica_previo(class="form-control", rows=2) }}
+                {% if form.historial_estetica_previo.errors %}
+                    {% for error in form.historial_estetica_previo.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.motivo_consulta.label(class="form-label") }}
+                {{ form.motivo_consulta(class="form-control", rows=2) }}
+                {% if form.motivo_consulta.errors %}
+                    {% for error in form.motivo_consulta.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.referido_por.label(class="form-label") }}
+                {{ form.referido_por(class="form-control") }}
+                {% if form.referido_por.errors %}
+                    {% for error in form.referido_por.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
             <div class="mb-3">
                 {{ form.medico_id.label(class="form-label") }}
                 {{ form.medico_id(class="form-select") }}
+                {% if form.medico_id.errors %}
+                    {% for error in form.medico_id.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
             </div>
-            
+
             <div class="row">
                 <div class="col-md-6 mb-3">
                     {{ form.fecha_hora.label(class="form-label") }}
-                    {{ form.fecha_hora(class="form-control") }}
+                    {# Importante: Usamos type="datetime-local" para el input HTML5 #}
+                    {# y el formato en forms.py debe ser '%Y-%m-%dT%H:%M' para que coincida #}
+                    {{ form.fecha_hora(class="form-control", type="datetime-local") }}
+                    {% if form.fecha_hora.errors %}
+                        {% for error in form.fecha_hora.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
                 <div class="col-md-6 mb-3">
                     {{ form.duracion_estimada.label(class="form-label") }}
                     {{ form.duracion_estimada(class="form-control") }}
+                    {% if form.duracion_estimada.errors %}
+                        {% for error in form.duracion_estimada.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
-            
+
             <div class="mb-3">
                 {{ form.notas.label(class="form-label") }}
                 {{ form.notas(class="form-control", rows=3) }}
+                {% if form.notas.errors %}
+                    {% for error in form.notas.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
             </div>
-            
+
             <button type="submit" class="btn btn-primary">Agendar Cita</button>
             <a href="{{ url_for('main.listar') }}" class="btn btn-secondary">Cancelar</a>
+            {# Nuevo botón para ver citas agendadas #}
+            <a href="{{ url_for('main.listar') }}" class="btn btn-info">Ver Citas Agendadas</a>
         </form>
     </div>
 </div>

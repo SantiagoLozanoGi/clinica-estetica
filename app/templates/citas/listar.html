@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Mis Citas</h2>
+    
+    {% if citas %}
+        <div class="list-group">
+            {% for cita in citas %}
+                <a href="{{ url_for('main.detalle', id=cita.id) }}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ cita.fecha_hora.strftime('%Y-%m-%d %H:%M') }}</h5>
+                        <small>{{ cita.estado|capitalize }}</small>
+                    </div>
+                    <p class="mb-1">Médico: {{ cita.medico.persona.nombres }} {{ cita.medico.persona.apellidos }}</p>
+                    <small>Duración: {{ cita.duracion_estimada }} minutos</small>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No tienes citas agendadas.</p>
+    {% endif %}
+
+    <a href="{{ url_for('main.agendar') }}" class="btn btn-primary mt-3">Agendar Nueva Cita</a>
+</div>
+{% endblock %}
+
