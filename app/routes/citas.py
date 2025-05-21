@@ -115,14 +115,14 @@ def agendar():
     return render_template('citas/agendar.html', form=form)
 
 
-@bp.route('/')
+@bp.route('/mis_citas', methods=['GET'])
 @login_required
 def listar():
     paciente = Paciente.query.filter_by(persona_id=current_user.persona.id).first()
     citas = Cita.query.filter_by(paciente_id=paciente.id).order_by(Cita.fecha_hora.desc()).all()
     return render_template('citas/listar.html', citas=citas)
 
-@bp.route('/<int:id>')
+@bp.route('/mis_citas/<int:id>')
 @login_required
 def detalle(id):
     cita = Cita.query.get_or_404(id)

@@ -20,9 +20,6 @@
     </div>
 </section>
 
-
-
-<!-- Sobre la Doctora -->
 <section class="py-5">
     <div class="container">
         <div class="row align-items-center">
@@ -58,8 +55,6 @@
     </div>
 </section>
 
-<!-- Servicios -->
-<!-- Procedimientos Destacados -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
@@ -67,10 +62,10 @@
             <p class="lead">Descubre nuestros tratamientos más populares</p>
         </div>
         
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center"> {# Added justify-content-center here #}
             <div class="col-md-4">
                 <div class="card procedure-card h-100">
-                    <img src="/static/images/P_LimpiezaFacial.jpg" class="card-img-top" alt="Limpieza">
+                    <img src="/static/images/P_LimpiezaFacial.jpg" class="card-img-top" alt="Limpieza" style="height: 200px; object-fit: cover;">
                     <div class="card-body">
                         <h5 class="card-title">Limpieza Facial</h5>
                         <p class="card-text">Tratamiento para suavizar y rejuvenecer la piel.</p>
@@ -79,134 +74,70 @@
                 </div>
             </div>
 
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold">Procedimientos Destacados</h2>
-      <p class="lead">Descubre nuestros tratamientos más populares</p>
-    <div class="row g-4">
-      <!-- Procedimiento 1 -->
-      <div class="col-md-4">
-        <div class="card procedure-card h-100">
-          <img src="/static/images/P_LimpiezaFacial.jpg" class="card-img-top" alt="Limpieza" style="height: 200px; object-fit: cover;">
-          <div class="card-body">
-            <h5 class="card-title">Limpieza Facial</h5>
-            <p class="card-text">Tratamiento para suavizar y rejuvenecer la piel.</p>
-            <a href="{{ url_for('main.detalleprocedimiento', id=1) }}" class="btn btn-outline-primary">Más información</a>
-          </div>
-        </div>
-      </div>
+            <div class="col-md-4">
+                <div class="card procedure-card h-100">
+                    <img src="/static/images/P_Botox.jpg" class="card-img-top" alt="Bótox" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Bótox</h5>
+                        <p class="card-text">Tratamiento para suavizar arrugas de expresión con resultados naturales.</p>
+                        <a href="{{ url_for('main.detalleprocedimiento', id=1) }}" class="btn btn-outline-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
 
-        <div class="col-md-4">
-            <div class="card procedure-card h-100">
-                <img src="/static/images/P_Acido_hialuronico.jpg" class="card-img-top" alt="Rellenos">
-                <div class="card-body">
-                    <h5 class="card-title">Ácido Hialurónico en labios</h5>
-                    <p class="card-text">Relleno para restaurar volumen y contorno de los labios.</p>
-                    <a href="{{ url_for('main.detalleprocedimiento', id=2) }}" class="btn btn-outline-primary">Más información</a>
+            <div class="col-md-4">
+                <div class="card procedure-card h-100">
+                    <img src="/static/images/P_Acido_hialuronico.jpg" class="card-img-top" alt="Rellenos" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Ácido Hialurónico en labios</h5>
+                        <p class="card-text">Relleno para restaurar volumen y contorno de los labios.</p>
+                        <a href="{{ url_for('main.detalleprocedimiento', id=2) }}" class="btn btn-outline-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card procedure-card h-100">
+                    <img src="/static/images/P_Perfilamiento_Facial.jpg" class="card-img-top" alt="Rellenos" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Ácido Hialurónico Facial</h5>
+                        <p class="card-text">Rellenos faciales para restaurar volumen y contorno facial.</p>
+                        <a href="{{ url_for('main.detalleprocedimiento', id=2) }}" class="btn btn-outline-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card procedure-card h-100">
+                    <img src="/static/images/P_Tratamiento_Acne.jpg" class="card-img-top" alt="Acne" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Tratamiento Para El Acné</h5>
+                        <p class="card-text">Desinflamación de zonas afectadas con tecnología de última generación.</p>
+                        <a href="{{ url_for('main.detalleprocedimiento', id=3) }}" class="btn btn-outline-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card procedure-card h-100">
+                    <img src="/static/images/P_Tratamiento_Manchas.jpg" class="card-img-top" alt="Manchas" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Tratamiento Para Manchas</h5>
+                        <p class="card-text">Inhibe la producción de melanina y renueva la piel con tecnología de última generación.</p>
+                        <a href="{{ url_for('main.detalleprocedimiento', id=3) }}" class="btn btn-outline-primary">Más información</a>
+                    </div>
                 </div>
             </div>
         </div>
-            
-        <div class="col-md-4">
-            <div class="card procedure-card h-100">
-                <img src="/static/images/P_Perfilamiento_Facial.jpg" class="card-img-top" alt="Rellenos">
-                <div class="card-body">
-                    <h5 class="card-title">Ácido Hialurónico Facial</h5>
-                    <p class="card-text">Rellenos faciales para restaurar volumen y contorno facial.</p>
-                    <a href="{{ url_for('main.detalleprocedimiento', id=2) }}" class="btn btn-outline-primary">Más información</a>
-                </div>
-            </div>
-        </div>    
 
-        <div class="col-md-4">
-            <div class="card procedure-card h-100">
-                <img src="/static/images/P_Tratamiento_Acne.jpg" class="card-img-top" alt="Acne">
-                <div class="card-body">
-                    <h5 class="card-title">Tratamiento Para El Acne</h5>
-                    <p class="card-text">Desinflamacion de zonas afectadas con tecnología de última generación.</p>
-                    <a href="{{ url_for('main.detalleprocedimiento', id=3) }}" class="btn btn-outline-primary">Más información</a>
-                </div>
-            </div>
-      <!-- Procedimiento 2 -->
-      <div class="col-md-4">
-        <div class="card procedure-card h-100">
-          <img src="/static/images/P_Botox.jpg" class="card-img-top" alt="Bótox" style="height: 200px; object-fit: cover;">
-          <div class="card-body">
-            <h5 class="card-title">Bótox</h5>
-            <p class="card-text">Tratamiento para suavizar arrugas de expresión con resultados naturales.</p>
-            <a href="{{ url_for('main.detalleprocedimiento', id=1) }}" class="btn btn-outline-primary">Más información</a>
-          </div>
+        <div class="text-center mt-4">
+            <a href="{{ url_for('main.procedimientos') }}" class="btn btn-primary btn-lg">
+                Ver todos los procedimientos <i class="fas fa-arrow-right ms-2"></i>
+            </a>
         </div>
-      </div>
-
-      <!-- Procedimiento 3 -->
-      <div class="col-md-4">
-        <div class="card procedure-card h-100">
-          <img src="/static/images/P_Acido_hialuronico.jpg" class="card-img-top" alt="Rellenos" style="height: 200px; object-fit: cover;">
-          <div class="card-body">
-            <h5 class="card-title">Ácido Hialurónico en labios</h5>
-            <p class="card-text">Relleno para restaurar volumen y contorno de los labios.</p>
-            <a href="{{ url_for('main.detalleprocedimiento', id=2) }}" class="btn btn-outline-primary">Más información</a>
-          </div>
-        </div>
-      </div>
-
-        <div class="col-md-4">
-            <div class="card procedure-card h-100">
-                <img src="/static/images/P_Tratamiento_Manchas.jpg" class="card-img-top" alt="Manchas">
-                <div class="card-body">
-                    <h5 class="card-title">Tratamiento Para Manchas</h5>
-                    <p class="card-text">Inhibe la producción de melanina y renueva la piel con tecnologia última generación.</p>
-                    <a href="{{ url_for('main.detalleprocedimiento', id=3) }}" class="btn btn-outline-primary">Más información</a>
-                </div>
-            </div>
-      <!-- Procedimiento 4 -->
-      <div class="col-md-4">
-        <div class="card procedure-card h-100">
-          <img src="/static/images/P_Perfilamiento_Facial.jpg" class="card-img-top" alt="Rellenos" style="height: 200px; object-fit: cover;">
-          <div class="card-body">
-            <h5 class="card-title">Ácido Hialurónico Facial</h5>
-            <p class="card-text">Rellenos faciales para restaurar volumen y contorno facial.</p>
-            <a href="{{ url_for('main.detalleprocedimiento', id=2) }}" class="btn btn-outline-primary">Más información</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Procedimiento 5 -->
-      <div class="col-md-4">
-        <div class="card procedure-card h-100">
-          <img src="/static/images/P_Tratamiento_Acne.jpg" class="card-img-top" alt="Acne" style="height: 200px; object-fit: cover;">
-          <div class="card-body">
-            <h5 class="card-title">Tratamiento Para El Acné</h5>
-            <p class="card-text">Desinflamación de zonas afectadas con tecnología de última generación.</p>
-            <a href="{{ url_for('main.detalleprocedimiento', id=3) }}" class="btn btn-outline-primary">Más información</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Procedimiento 6 -->
-      <div class="col-md-4">
-        <div class="card procedure-card h-100">
-          <img src="/static/images/P_Tratamiento_Manchas.jpg" class="card-img-top" alt="Manchas" style="height: 200px; object-fit: cover;">
-          <div class="card-body">
-            <h5 class="card-title">Tratamiento Para Manchas</h5>
-            <p class="card-text">Inhibe la producción de melanina y renueva la piel con tecnología de última generación.</p>
-            <a href="{{ url_for('main.detalleprocedimiento', id=3) }}" class="btn btn-outline-primary">Más información</a>
-          </div>
-        </div>
-      </div>
     </div>
-
-    <div class="text-center mt-4">
-      <a href="{{ url_for('main.procedimientos') }}" class="btn btn-primary btn-lg">
-        Ver todos los procedimientos <i class="fas fa-arrow-right ms-2"></i>
-      </a>
-    </div>
-  </div>
 </section>
 
-
-<!-- Testimonios -->
 <section class="py-5">
     <div class="container">
         <h2 class="text-center fw-bold mb-5">Lo que dicen nuestros pacientes</h2>
